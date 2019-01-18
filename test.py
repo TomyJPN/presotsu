@@ -26,24 +26,9 @@ def mecab_list(text):
 
 point=0
 data=[]
-#日本語評価極性辞書（用言編）ver.1.0
-f=open(r'wago.txt','r',encoding="utf-8_sig")
-lines1=f.readlines()    #一行毎にファイル終端まで
-f.close()
-print("np判定用データの読み込み(用言)")
-# lines1: リスト。要素は1行の文字列データ
-for i,line in enumerate(lines1):
-    lines1[i] = line.replace('\r','')
-    lines1[i] = line.replace('\n','')
-    tmp = line.split()
-    tmp.pop(0)
-    if('ポジ' in line):   #検索(あるならtrue)
-        bl=1
-    else:
-        bl=-1
-    data.append([bl,tmp[0]])
-    #print(data[i])
-
+print('用言データを使いますか?(不十分)')
+print('(y/n)')
+yogen=input()
 #日本語評価極性辞書（名詞編）ver.1.0
 f=open(r'pn.csv','r',encoding="utf-8_sig")
 lines2=f.readlines()    #一行毎にファイル終端まで
@@ -71,6 +56,26 @@ for i,line in enumerate(lines2):
         bl=0
     data.append([bl,tmp[0]])
     #print(data[i])
+
+if(yogen=='y'):
+    #日本語評価極性辞書（用言編）ver.1.0
+    f=open(r'wago.txt','r',encoding="utf-8_sig")
+    lines1=f.readlines()    #一行毎にファイル終端まで
+    f.close()
+    print("np判定用データの読み込み(用言)")
+    # lines1: リスト。要素は1行の文字列データ
+    for i,line in enumerate(lines1):
+        lines1[i] = line.replace('\r','')
+        lines1[i] = line.replace('\n','')
+        tmp = line.split()
+        tmp.pop(0)
+        if('ポジ' in line):   #検索(あるならtrue)
+            bl=1
+        else:
+            bl=-1
+        data.append([bl,tmp[0]])
+        #print(data[i])
+
 
 
 print("\n解析する文章を入力>>")
