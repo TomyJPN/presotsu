@@ -1,5 +1,6 @@
 import sys
 import MeCab
+from time import sleep
 
 #参考：https://qiita.com/menon/items/2b5ad487a98882289567
 class Word:
@@ -84,7 +85,7 @@ lst=mecab_list(input)
 print(lst)
 print("ーーーー分解ーーーー")
 for i in lst:
-    print(i[0])
+    print(i)
 print("ーーーー照合ーーーー")
 for i,item in enumerate(lst):
     #print(lst[i][4])
